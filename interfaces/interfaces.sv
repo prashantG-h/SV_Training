@@ -91,3 +91,27 @@ endmodule
 
 
 
+
+module m1();
+
+class transaction;
+int a;
+static int b;
+function new(int a);
+this.a =a;
+b = a++;
+endfunction
+endclass
+
+  transaction t[5];
+
+initial begin
+
+foreach(t[i])
+begin
+  t[i]=new(i);
+  $display("t[i]=%p",t[i]);
+end
+end
+
+  endmodule
